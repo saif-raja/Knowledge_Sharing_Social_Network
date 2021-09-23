@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>/add_note.html</loc>
+    </url>
+    <url>
+        <loc>/add_note_linking.html</loc>
+    </url>
+    <url>
+        <loc>/comparison.html</loc>
+    </url>
+    <url>
+        <loc>/contact_us.html</loc>
+    </url>
+    <url>
+        <loc>/index.html</loc>
+    </url>
+    <url>
+        <loc>/login.html</loc>
+    </url>
+    <url>
+        <loc>/my_notes.html</loc>
+    </url>
+    <url>
+        <loc>/note_view.html</loc>
+    </url>
+    <url>
+        <loc>/search_notes.html</loc>
+    </url>
+    <url>
+        <loc>/sign-up.html</loc>
+    </url>
+    <url>
+        <loc>/use_case.html</loc>
+    </url>
+</urlset>

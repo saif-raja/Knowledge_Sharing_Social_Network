@@ -1,0 +1,82 @@
+{% macro make_note_table( notes , User , link_check_box_FLAG = False , delete_note_btn_FLAG = False , show_author_FLAG =True) %}
+<!-- Start: Note_Cards-all_options -->
+<div class="row" style="margin: 40px;background: #ececec;">
+    {% for note in notes %}
+        <div class="col-lg-4">
+            <div class="card clean-testimonial-item border-0 rounded-0" style="margin: 0px;margin-bottom: 30px;margin-top: 30px;">
+                <div class="card-body" style="padding: 25px;">
+                    <p class="card-text">{{ note.data[:250] }}</p>
+                </div>
+
+                    {% if show_author_FLAG %}
+                    <h3 style="margin: 15px;"> {{ User.query.get(note.user_id).name }} </h3>
+                    {% endif %}
+                
+                {% if link_check_box_FLAG %}
+                <div class="form-check" style="margin: 0px;text-align: center;">
+                    <input class="form-check-input" type="checkbox" id="checkbox_{{note.id}}" name="checkbox" value="{{note.id}}" style="height: 20px;width: 20px;">
+                    <label class="form-check-label" for ="formCheck-1" style="margin: 5px;">Link this note</label>
+                </div>
+                {% endif %}
+                
+                {% if delete_note_btn_FLAG %}
+                <button class="btn btn-outline-danger btn-sm" type="button" onClick="deleteNote( {{ note.id }} )" style="margin: 15px;">Delete Note</button>
+                {% endif %}
+                
+                <!-- <a href="/note_view/{{note.id}}" target="_blank"></a> -->
+                <!-- <button class="btn btn-outline-primary btn-sm" type="button" style="margin: 15px"  onclick="location.href='/note_view/{{note.id}}'" >Open Note Page</button> -->
+                <button class="btn btn-outline-primary btn-sm" type="button" style="margin: 15px"  onclick="window.open('/note_view/{{note.id}}')" >Open Note Page</button>
+            
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- End: Note_Cards-all_options -->
+
+{% endmacro %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% macro make_generalized_table_header(headings) %}
+    <tr>
+        {% for header in headings %}
+            <th>
+                {{header}}
+            </th>
+        {% endfor %}
+    </tr>
+{% endmacro %}
+
+
+{% macro make_generalized_table_rows(rows) %}
+    {% for row in rows %}
+        <tr>
+            {% for data in row %}
+                <td>
+                    {{data}}
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro make_table(headings , rows) %}
+    <table class="table my-0" , name='data_table' , id='data_table'>
+        {{ make_generalized_table_header(headings)}}
+        {{ make_generalized_table_rows  (rows    )}}        
+    </table>
+{% endmacro %}

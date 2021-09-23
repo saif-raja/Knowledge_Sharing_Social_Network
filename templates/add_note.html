@@ -1,0 +1,40 @@
+
+
+{% extends "base.html" %} 
+
+{% block title %}Add a Note to Project Cognexus{% endblock %} 
+
+{% block content%}
+
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Author a  Note :</h2>
+                    <p>Up to  4000 characters&nbsp;</p>
+                    <p>Please cross-check spellings before submitting,</p>
+                    <p>It is needed for better search results</p>
+
+                </div>
+
+                {% if note_id_to_link :%}
+
+                <div class="card clean-testimonial-item border-0 rounded-0" style="margin: 0px;margin-bottom: 30px;">
+                    <div class="card-body" style="padding: 25px;">
+                        <h3>Creating a note linked to Note : </h3>
+                        <p class="card-text"> {{ Note.query.get(note_id_to_link).data  }}</p>
+                    </div>
+                </div>
+
+                {% endif %}
+
+
+                <form method="POST" >
+                    <div class="form-group"><textarea class="form-control" id="message" maxlength = "4000" name="note" style="height: 400px;"></textarea></div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Add</button></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

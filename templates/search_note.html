@@ -1,0 +1,30 @@
+{% from 'macros.html' import make_note_table %}
+
+{% extends "base.html" %} 
+
+{% block title %}Explore Knowledge in Project Cognexus{% endblock %} 
+
+{% block content%}
+
+    <main class="page testimonials">
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <div class="block-heading" style="margin-top: 25px;padding: 25px;">
+                    <h2 class="text-info">Explore Notes</h2>
+                    <p>Search any topic you want to learn more about&nbsp;</p><!-- Start: Pretty Search Form -->
+                    <form class="search-form" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div>
+                            <input class="form-control" type="text" placeholder="{{search_bar_value}}" name="search_input" id="search_input">
+                            <div class="input-group-append"><button class="btn btn-light" type="submit">Search </button></div>
+                        </div>
+                    </form><!-- End: Pretty Search Form -->
+
+                    {{ make_note_table ( notes = search_results , User = User , link_check_box_FLAG = False , delete_note_btn_FLAG = False , show_author_FLAG =True )}}
+
+                </div>
+            </div>
+        </section>
+    </main><!-- Start: Footer Dark -->
+
+{% endblock %}

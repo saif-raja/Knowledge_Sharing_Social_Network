@@ -1,0 +1,56 @@
+{% from 'macros.html' import make_note_table %}
+
+{% extends "base.html" %} 
+
+{% block title %}Note{% endblock %} 
+
+{% block content%}
+
+    <main class="page blog-post">
+        <section class="clean-block clean-post dark unsplashify " style=" 
+        background-image: url('https://source.unsplash.com/featured/?{{unsplash_query_text}}') ; background-size: cover, auto;">
+            <div class="container">
+                <div class="post-body" style="background: rgba(255,255,255,0.78);padding: 25px;text-align: center;margin-top: 20px;margin-bottom: 60px;">
+                    <div class="post-info" style="text-align: center;background: rgba(255,255,255,0.47);padding: 20px;margin-top: 60px;">
+                        <span style="font-size: 20px;color: rgb(0,0,0);margin-right: 25px;">Note Authored by&nbsp;&nbsp;</span>
+                        <span style="font-size: 25px;color: rgb(0,0,0);">{{ author }}</span><span style="font-size: 16px;text-align: center;color: rgb(0,0,0);">{{ note.date }}</span></div>
+                    <p style="background: #ffffff;text-align: center;padding: 20px;margin-bottom: 25px;">{{ note.data }}&nbsp;</p>
+
+                    <form style="color:rgb(96, 100, 105)" method="GET" action="/create_note/{{note.id}}">   
+                    <button class="btn btn-outline-primary btn-sm" type="submit" style="margin: 15px;">Create a Note Linking to this one&nbsp;</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <section>
+        <div class="row" style="padding-top: 25px;padding-bottom: 25px;">
+            <div class="col">
+                <div class="block-heading">
+                    <h2 class="text-info" style="text-align: center;">Linked Notes</h2>
+                    <p style="text-align: center;">The below notes were linked by the users of the network to the above note</p>
+                </div>
+            </div>
+        </div>            
+
+        {{ make_note_table (notes = linked_notes , User = User , link_check_box_FLAG = False , delete_note_btn_FLAG = False , show_author_FLAG =True )}}
+    </section>
+
+
+    <section>
+        <div class="row" style="padding-top: 25px;padding-bottom: 25px;">
+            <div class="col">
+                <div class="block-heading">
+                    <h2 class="text-info" style="text-align: center;">Similiar Notes</h2>
+                    <p style="text-align: center;">The below notes are suggested as similar by our custom search engine .<br>Score is calculated based on similarity of words in the notes compared .</p>
+                </div>
+            </div>
+        </div>
+                    
+        {{ make_note_table (notes = similiar_notes , User = User , link_check_box_FLAG = False , delete_note_btn_FLAG = False , show_author_FLAG = True  )}}
+    </section>
+
+
+{% endblock %}

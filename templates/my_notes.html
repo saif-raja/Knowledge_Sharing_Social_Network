@@ -1,0 +1,23 @@
+{% from 'macros.html' import make_note_table %}
+
+{% extends "base.html" %} 
+
+{% block title %}My Notes in Project Cognexus{% endblock %} 
+
+{% block content%}
+
+    <main class="page testimonials">
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Your Notes</h2>
+                    <p>Sorted from Newest to Oldest</p>
+                </div>
+
+                {{ make_note_table (notes = mynotes , User = User , link_check_box_FLAG = False , delete_note_btn_FLAG = True , show_author_FLAG = False )}}
+
+            </div>
+    </section>
+    </main>
+    
+{% endblock %}

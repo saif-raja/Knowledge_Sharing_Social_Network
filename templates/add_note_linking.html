@@ -1,0 +1,28 @@
+{% from 'macros.html' import make_note_table %}
+
+{% extends "base.html" %} 
+
+{% block title %}Add Links to my New Note{% endblock %} 
+
+{% block content%}
+
+    <main class="page testimonials">
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <form method="POST" name="checkbox_form" id="checkbox_form">
+
+                    <div class="block-heading" style="margin-top: 20px;padding-top: 20px;">
+                        <h2 class="text-info">Select Notes to Link</h2>
+                        <p>Each Note has to be Linked to atleast One note .</p>
+                        <p>You can link as many notes as you want .</p>
+                        <button class="btn btn-outline-primary btn-sm" type="submit" style="margin: 15px;" >Submit selected notes for linking</button>
+                    </div>
+            
+                    {{ make_note_table (notes = search_results , User = User , link_check_box_FLAG = True , delete_note_btn_FLAG = False , show_author_FLAG =True )}}
+                
+                </form>
+            </div>
+        </section>
+    </main><!-- Start: Footer Dark -->
+
+{% endblock %}
